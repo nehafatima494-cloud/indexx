@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sep-8</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #1e1e1e, #0d0d0d);
+      font-family: 'Courier New', monospace;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background pattern FULL PAGE */
+    .background-text {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      transform: rotate(-30deg);
+      display: flex;
+      flex-wrap: wrap;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .background-text span {
+      font-size: 3em;
+      font-weight: bold;
+      color: rgba(255, 69, 0, 0.25); /* brighter & visible */
+      margin: 20px;
+    }
+
+    .card {
+      position: relative;
+      background: rgba(20,20,20,0.95);
+      padding: 30px 25px;   /* smaller padding */
+      border-radius: 15px; /* slightly smaller curve */
+      border: 2px solid #ff4500;
+      box-shadow: 0 0 30px rgba(255,69,0,0.8), 0 0 60px rgba(255,69,0,0.3);
+      max-width: 500px;    /* smaller width */
+      z-index: 2;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .cat {
+      font-size: 4.5em;   /* slightly smaller emoji */
+      margin-bottom: 15px;
+      animation: bounce 2s infinite ease-in-out;
+      text-shadow: 0 0 20px #ff4500, 0 0 40px #ff6347;
+    }
+
+    h1 {
+      font-size: 2.4em;
+      color: #ff6347;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #ddd;
+      line-height: 1.5;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      top: -10px;
+      animation: fall 6s linear infinite;
+      border-radius: 50%;
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Repeated tilted BHARWY background -->
+  <div class="background-text"></div>
+
+  <!-- Confetti effect -->
+  <script>
+    for (let i = 0; i < 70; i++) {
+      let confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      document.body.appendChild(confetti);
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      confetti.style.backgroundColor = 
+        ["#ff4500","#ffa500","#ff6347","#ff0000","#ff8c00","#ffd700"][Math.floor(Math.random()*6)];
+    }
+
+    // Fill background FULL PAGE with "BHARWY"
+    const bg = document.querySelector(".background-text");
+    for (let i = 0; i < 800; i++) {   
+      let word = document.createElement("span");
+      word.textContent = "aero trader";
+      bg.appendChild(word);
+    }
+  </script>
+
+  <div class="card">
+    <div class="cat">😼✈️</div>
+    <h1>Happy 16th Lala!</h1>
+    <p><br>
+    Wishing you sense, logic and BILLIAN <br>
+    (fielding set hai)</p>
+  </div>
+</body>
+</html>
